@@ -1,0 +1,50 @@
+[user]
+    name = Your name
+    email = "your.name@org.com"
+[branch]
+    autosetupmerge = true
+    autosetuprebase = always
+[color]
+    ui = auto
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+    whitespace = red reverse
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+[alias]
+    # Shortcuts
+    dt = difftool
+    st = status
+    ci = commit
+    br = branch
+    co = checkout
+    df = diff
+    dc = diff --cached
+    lg = log -p
+    lol = log --graph --decorate --pretty=oneline --abbrev-commit
+    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    lols = log --graph --decorate --pretty=format:\"%C(yellow)%h %C(cyan)%aN %Creset%s\"  --abbrev-commit --no-merges master..
+    lolbs = log --graph --decorate --pretty=oneline --abbrev-commit --no-merges master.. --stat
+    ls = ls-files
+
+    # Remove all files just added to the index
+    unadd = reset HEAD --
+
+    # Open in vim all files that has been modified from the given branch, each one in a separate tab
+    vim = "!f() { VIMFILES=''; atLeastOne=0; for FILE in `git diff --name-only $1`; do VIMFILES=\"$VIMFILES $FILE\"; atLeastOne=1; done; if [ $atLeastOne -ne 1 ]; then echo \"No file to open\"; else vim -p $VIMFILES; fi; }; f"
+[push]
+    default = tracking
+[diff]
+    tool = vimdiff
+[difftool]
+    prompt = false
+
