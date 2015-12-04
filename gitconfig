@@ -39,6 +39,9 @@
     # Remove all files just added to the index
     unadd = reset HEAD --
 
+    # Display only logs between the current branch and master
+    l = log master..
+
     # Open in vim all files that has been modified from the given branch, each one in a separate tab
     vim = "!f() { VIMFILES=''; atLeastOne=0; for FILE in `git diff --name-only $1`; do VIMFILES=\"$VIMFILES $FILE\"; atLeastOne=1; done; if [ $atLeastOne -ne 1 ]; then echo \"No file to open\"; else vim -p $VIMFILES; fi; }; f"
 [push]
